@@ -19,6 +19,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.text-bold {
+    font-weight: bold; /* Atau gunakan angka seperti 700 */
+}
+
 body {
     background-color: var(--ghost-white);
     color: var(--deep-navy);
@@ -119,13 +123,14 @@ nav a {
 /* --- MATRIX (FLEXBOX) --- */
 #matrix {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+    gap: 2.5rem;
 }
 
 #matrix article {
     background: white;
     padding: 2rem;
+    flex-direction: column;
     border-left: 4px solid var(--teal);
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
@@ -295,4 +300,29 @@ footer {
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid var(--teal); /* Memberi aksen border teal agar 'techy' */
+}
+
+/* Container Utama untuk menyamakan lebar dan posisi */
+
+/* Memastikan Judul Section sejajar dengan isi kontennya */
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: left; /* Memastikan teks tetap di kiri */
+    width: 100%;
+}
+
+/* Memastikan Grid Matrix dan Projects menggunakan margin yang sama */
+#matrix, #projects {
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+}
+
+/* Media Query untuk Mobile agar tetap rapi */
+@media (max-width: 768px) {
+    section {
+        padding: 2rem 1.5rem; /* Padding lebih kecil untuk HP agar tidak sempit */
+    }
 }

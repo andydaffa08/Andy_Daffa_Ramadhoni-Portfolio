@@ -1,0 +1,298 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --deep-navy: #0F172A;
+    --teal: #2DD4BF;
+    --ghost-white: #F8FAFC;
+    --slate: #475569;
+    
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--ghost-white);
+    color: var(--deep-navy);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah horizontal scroll di level body */
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--deep-navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--teal);
+    transition: 0.3s ease;
+}
+
+/* --- LAYOUT UTILITIES --- */
+section {
+    padding: 4rem 1.5rem;
+    max-width: 100%; /* Menjamin tidak melebar keluar viewport */
+}
+
+/* --- HEADER & NAV --- */
+
+header {
+
+    /* Pastikan header selalu berada di tumpukan paling atas */
+   position: sticky;
+    top: 0;
+    /* Naikkan z-index lebih tinggi lagi */
+    z-index: 10000 !important; 
+    background-color: #0F172A !important; /* Paksa warna Navy */
+    width: 100%;
+    padding: 15px 0;
+    /* Pastikan tidak ada konten di bawahnya yang bisa "mengintip" */
+    
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #F8FAFC !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    /* Mencegah teks terpotong */
+    line-height: 1; 
+    display: inline-block;
+    z-index: 10000;
+}
+
+/* Tambahkan padding pada Hero agar tidak tertutup saat awal loading */
+#hero {
+    padding-top: 80px; 
+    position: relative;
+    z-index: 1; /* Pastikan hero berada di bawah header */
+}
+/* --- HERO SECTION --- */
+#hero {
+    background-color: var(--deep-navy);
+    color: var(--ghost-white);
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h1 {
+    color: var(--teal);
+    font-size: 2.5rem;
+}
+
+#hero [role="button"] {
+    background-color: var(--teal);
+    color: var(--deep-navy);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+/* --- MATRIX (FLEXBOX) --- */
+#matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#matrix article {
+    background: white;
+    padding: 2rem;
+    border-left: 4px solid var(--teal);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* --- SELECTED PROJECTS (GRID) --- */
+#projects {
+    display: grid;
+    grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+    gap: 2.5rem;
+}
+
+#projects article {
+    display: flex;
+    flex-direction: column;
+}
+
+#projects img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* --- THE LAB (GALLERY GRID) --- */
+#lab {
+    background-color: #f1f5f9;
+}
+
+#lab figure {
+    margin-bottom: 2rem;
+}
+
+#lab img {
+    width: 100%;
+    border-radius: 8px;
+    filter: grayscale(20%);
+}
+
+/* --- CONTACT FORM --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+fieldset {
+    border: 1px solid #cbd5e1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--font-body);
+}
+
+button {
+    background-color: var(--deep-navy);
+    color: var(--teal);
+    padding: 1rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--deep-navy);
+    color: var(--ghost-white);
+}
+
+/* --- MEDIA QUERIES (DESKTOP) --- */
+@media (min-width: 768px) {
+    #matrix {
+        flex-direction: row;
+    }
+    
+    #projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #hero h1 {
+        font-size: 4rem;
+    }
+}
+
+
+
+/* --- SELECTED PROJECTS FIX (Sejajar di Desktop) --- */
+#projects {
+    display: grid;
+    grid-template-columns: 1fr; /* Default Mobile: 1 kolom */
+    gap: 2rem;
+    padding: 4rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Memastikan Judul "Proyek Pilihan" selalu di atas (Full Width) */
+#projects h2 {
+    grid-column: 1 / -1; 
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+/* MEDIA QUERIES (Untuk Tampilan Desktop agar Sejajar) */
+@media (min-width: 768px) {
+    #projects {
+        grid-template-columns: repeat(2, 1fr); /* Menjadi 2 kolom sejajar */
+        align-items: start; /* Menjaga agar konten mulai dari atas yang sama */
+    }
+
+    #projects article {
+        height: 100%; /* Membuat kotak proyek sama tinggi */
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* --- IMAGE FIX --- */
+#projects img {
+    width: 100%;
+    height: 250px; /* Memberi tinggi yang seragam agar sejajar */
+    object-fit: cover; /* Gambar dipotong rapi, tidak gepeng */
+    border-radius: 12px;
+}
+
+/* --- THE LAB FIX (Sejajar di Desktop) --- */
+#lab {
+    display: grid;
+    grid-template-columns: 1fr; /* Default Mobile: 1 kolom */
+    gap: 2rem;
+    padding: 4rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Memastikan Judul "The Lab" dan deskripsinya selalu di atas (Full Width) */
+#lab h2, #lab p:first-of-type {
+    grid-column: 1 / -1;
+}
+
+/* Memperbaiki tampilan Galeri di Desktop */
+@media (min-width: 768px) {
+    #lab {
+        grid-template-columns: repeat(2, 1fr); /* Menjadi 2 kolom sejajar */
+    }
+
+    #lab figure {
+        margin-bottom: 0; /* Menghilangkan margin bawah agar sejajar rapi */
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Styling Gambar di Lab agar konsisten */
+#lab img {
+    width: 100%;
+    height: 300px; /* Tinggi sedikit lebih besar untuk detail hardware */
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--teal); /* Memberi aksen border teal agar 'techy' */
+}
